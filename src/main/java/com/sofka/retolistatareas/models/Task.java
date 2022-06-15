@@ -23,7 +23,7 @@ public class Task implements Serializable {
     @Column(name = "completado")
     private Boolean completed;
 
-    @ManyToOne(fetch = FetchType.EAGER, targetEntity = Listing.class, optional = false)
+    @ManyToOne(fetch = FetchType.LAZY, optional = false)
     @JoinColumn(name = "id_lista", nullable = false)
     @JsonBackReference
     private Listing lista;

@@ -24,7 +24,7 @@ public class Listing implements Serializable {
 
     @OneToMany(fetch = FetchType.EAGER,
             targetEntity = Task.class,
-            cascade = CascadeType.ALL,
+            cascade = CascadeType.REMOVE,
             mappedBy = "lista")
     @JsonManagedReference
     private List<Task> tasks = new ArrayList<>();

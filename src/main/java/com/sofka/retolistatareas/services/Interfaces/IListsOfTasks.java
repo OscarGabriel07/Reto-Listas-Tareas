@@ -6,6 +6,7 @@ import java.util.ArrayList;
 
 public interface IListsOfTasks {
 
+
     public ArrayList<Listing> getLists();
 
     public ArrayList<Task> getTasks();
@@ -13,4 +14,11 @@ public interface IListsOfTasks {
     public Listing saveListing(Listing listing);
 
     public Task saveTask(Task task);
+
+    public Boolean deleteListing(Integer id);
+
+    public Boolean deleteTask(Integer id);
+
+    public Task updateTask(Integer id, Task task);
+
 }

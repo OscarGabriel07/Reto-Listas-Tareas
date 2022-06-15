@@ -34,4 +34,27 @@ public class ControllerListsOfTasks {
         return this.serviceListsOfTasks.saveTask(task);
     }
 
+    @DeleteMapping(path = "/listing/{id}")
+    public String deleteListing(@PathVariable("id") Integer id){
+        boolean ok = this.serviceListsOfTasks.deleteListing(id);
+        if (ok) {
+            return "Se eliminó la lista con id " + id;
+        } else {
+            return "No se pudo eliminar la lista con id " + id;
+        }
+    }
+    @DeleteMapping(path = "/task/{id}")
+    public String deleteTask(@PathVariable("id") Integer id){
+        boolean ok = this.serviceListsOfTasks.deleteTask(id);
+        if (ok) {
+            return "Se eliminó la tarea con id " + id;
+        } else {
+            return "No se pudo eliminar la tarea con id " + id;
+        }
+    }
+
+    @PutMapping(path = "/task/{id}")
+    public Task updateTask(@PathVariable("id") Integer id, @RequestBody Task task){
+        return serviceListsOfTasks.updateTask(id, task);
+    }
 }

@@ -37,4 +37,32 @@ public class ServiceListsOfTasks implements IListsOfTasks {
         task.setCompleted(false);
         return repositoryTask.save(task);
     }
+
+    @Override
+    public Boolean deleteListing(Integer id) {
+        try {
+            repositoryListing.deleteById(id);
+            return true;
+        }catch (Exception e){
+            return false;
+        }
+    }
+
+    @Override
+    public Boolean deleteTask(Integer id) {
+        try {
+            repositoryTask.deleteById(id);
+            return true;
+        }catch (Exception e){
+            return false;
+        }
+    }
+
+    @Override
+    public Task updateTask(Integer id, Task task) {
+        task.setId(id);
+        return repositoryTask.save(task);
+    }
+
+
 }
