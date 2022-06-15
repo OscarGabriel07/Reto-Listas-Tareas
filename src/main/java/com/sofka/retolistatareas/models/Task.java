@@ -1,8 +1,11 @@
 package com.sofka.retolistatareas.models;
 
+import com.fasterxml.jackson.annotation.JsonBackReference;
+import lombok.Data;
 import javax.persistence.*;
 import java.io.Serializable;
 
+@Data
 @Entity
 @Table(name = "tarea")
 public class Task implements Serializable {
@@ -18,42 +21,11 @@ public class Task implements Serializable {
     private String description;
 
     @Column(name = "completado")
-    private Integer completed;
+    private Boolean completed;
 
-    @ManyToOne(fetch = FetchType.LAZY, optional = false)
+    @ManyToOne(fetch = FetchType.EAGER, targetEntity = Listing.class, optional = false)
     @JoinColumn(name = "id_lista", nullable = false)
+    @JsonBackReference
     private Listing lista;
-
-    public Integer getId() {
-        return id;
-    }
-
-    public void setId(Integer id) {
-        this.id = id;
-    }
-
-    public String getDescription() {
-        return description;
-    }
-
-    public void setDescription(String descripcion) {
-        this.description = description;
-    }
-
-    public Integer getCompleted() {
-        return completed;
-    }
-
-    public void setCompleted(Integer completed) {
-        this.completed = completed;
-    }
-
-    public int getIdList() {
-        return lista.getId();
-    }
-
-    public void setIdList(Listing lista) {
-        this.lista = lista;
-    }
 
 }

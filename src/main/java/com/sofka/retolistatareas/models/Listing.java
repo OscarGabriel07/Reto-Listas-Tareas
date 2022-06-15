@@ -1,10 +1,13 @@
 package com.sofka.retolistatareas.models;
 
+import com.fasterxml.jackson.annotation.JsonManagedReference;
+import lombok.Data;
 import javax.persistence.*;
 import java.io.Serializable;
 import java.util.ArrayList;
 import java.util.List;
 
+@Data
 @Entity
 @Table(name = "lista")
 public class Listing implements Serializable {
@@ -14,36 +17,16 @@ public class Listing implements Serializable {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Column(name = "id", nullable = false)
-    private int id;
+    private Integer id;
 
     @Column(name = "nombre", nullable = false, length = 100)
     private String name;
 
-    @OneToMany(mappedBy = "lista")
+    @OneToMany(fetch = FetchType.EAGER,
+            targetEntity = Task.class,
+            cascade = CascadeType.ALL,
+            mappedBy = "lista")
+    @JsonManagedReference
     private List<Task> tasks = new ArrayList<>();
-
-    public int getId() {
-        return id;
-    }
-
-    public void setId(int id) {
-        this.id = id;
-    }
-
-    public String getName() {
-        return name;
-    }
-
-    public void setName(String name) {
-        this.name = name;
-    }
-
-    /*public List<Task> getTasks() {
-        return tasks;
-    }*/
-
-    public void setTasks(List<Task> tasks) {
-        this.tasks = tasks;
-    }
 
 }
