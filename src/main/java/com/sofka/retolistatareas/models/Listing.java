@@ -14,7 +14,7 @@ public class Listing implements Serializable {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Column(name = "id", nullable = false)
-    private Integer id;
+    private int id;
 
     @Column(name = "nombre", nullable = false, length = 100)
     private String name;
@@ -22,11 +22,11 @@ public class Listing implements Serializable {
     @OneToMany(mappedBy = "lista")
     private List<Task> tasks = new ArrayList<>();
 
-    public Integer getId() {
+    public int getId() {
         return id;
     }
 
-    public void setId(Integer id) {
+    public void setId(int id) {
         this.id = id;
     }
 

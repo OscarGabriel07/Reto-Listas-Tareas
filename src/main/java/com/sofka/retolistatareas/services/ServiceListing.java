@@ -16,4 +16,8 @@ public class ServiceListing {
     public ArrayList<Listing> getLists(){
         return (ArrayList<Listing>) repositoryListing.findAll();
     }
+
+    public Listing saveListing(Listing listing){
+        return repositoryListing.save(listing);
+    }
 }

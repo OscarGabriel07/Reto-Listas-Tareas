@@ -3,9 +3,7 @@ package com.sofka.retolistatareas.controllers;
 import com.sofka.retolistatareas.models.Listing;
 import com.sofka.retolistatareas.services.ServiceListing;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
 
 import java.util.ArrayList;
 
@@ -19,5 +17,10 @@ public class ControllerListing {
     @GetMapping()
     public ArrayList<Listing> getLists(){
         return serviceListing.getLists();
+    }
+
+    @PostMapping()
+    public Listing saveListing(@RequestBody Listing listing){
+        return this.serviceListing.saveListing(listing);
     }
 }
